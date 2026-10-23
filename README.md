@@ -1,17 +1,12 @@
 # ECE 309 · Project 3 starter — Tool Use and the Tool Registry
 
-Read `P3_spec.md` (in this folder) first. This file only covers setting up the repo.
-
-## 1. Bring your P2 code
-
-Copy four files from your P2 repo (details in `src/core/README.md`):
-
+These 4 files from P2 have been ported to this repository.
 ```
 include/core/conversation.h      include/core/sentinel_scanner.h
 src/core/conversation.cpp        src/core/sentinel_scanner.cpp
 ```
 
-Do **not** copy `message.h`; the P3 one adds `Role::Tool`.
+  `message.h` Was NOT copied onto P3  from P2 since it adds `Role::Tool`.
 
 If your P2 code doesn't work, build against the instructor's reference instead:
 
@@ -51,8 +46,8 @@ that file.
 | File | Status |
 |---|---|
 | `src/tools/tool_registry.cpp` and the private section of `include/tools/tool_registry.h` | **you implement** (45 pts) |
-| `src/tools/workspace.cpp` (`Workspace::resolve` only) | **you implement** (15 pts) |
-| `src/tools/calculator_eval.cpp` (`calc_evaluate`) | **you implement** (10 pts) |
-| `tests/p3/test_p3.cpp` (≥ 15 tests) | **you write** |
-| `docs/design-log-p3.md` | **you write** |
-| everything else | provided, do not modify |
+| `src/tools/workspace.cpp` (`Workspace::resolve` only) | **Completed** (15 pts) |
+| `src/tools/calculator_eval.cpp` (`calc_evaluate`) | **Completed** (10 pts) |
+| `tests/p3/test_p3.cpp` (≥ 15 tests) | **Completed** |
+| `docs/design-log-p3.md` | **Completed** |
+| everything else | provided, and has not been modified |
