@@ -9,9 +9,6 @@ Weak hash s[0] + s.size() (at 16384 buckets): had a bucket_count = 16384, a load
 My hash out performs the weak hash provided because when testing the weak hash with every name starting with 't' and has the length of 6 to 9, it produces only four distinct values. Of the 10,000 names, 9,000 land in a single chain, so find worsens from a handful of comparisons to thousands. 
 The add function is amortized O(1) because ideally and most often the tool key is turned into an index and then a simple push back function is called to append the tool at the end of the bucket and worst case scenario of O(n) only happens once every time the load factor is reached where each element needs rehashed. Since this is so infrequent and will only become less frequent each time it happens the  amortized complexity is O(1).  
 
-
-
-
 Pointer stability
 Each bucket holds a vector of unique_ptr, so every Tool lives on the heap at its own address. A resize only moves the unique_ptr values from the old vectors to the new ones, not the tools themselves. This comes with the added bonus of making a rehash faster since it's only moving one pointer compared to an entire object's worth of information. So after a rehash the unique_ptr’s still point to their respective tools in the heap, just now the pointer lives somewhere else.
 Calculator trace of 2 * (3 + 4) - 5
@@ -28,5 +25,6 @@ Lastly apply - (14 - 5 = 9) -> values: [9], ops: []
 
 Errors as values
 It is expected that when running an AI agent or any program will run into errors such as dividing by zero, and instead of causing a crash or an exception to instead have an object that reports back the error and in this case let the user and the AI agent know what went wrong and try again. This can keep the work flow smooth while preventing serious issues such as dividing by zero or accessing files that aren’t supposed to be accessed or altered. Then if there is a truly serious issue that is unintended the system can cause an exception and prevent anything going bad.
+
 What I would do Differently
 It was hard to wrap my head around the calculator_eval.cpp logic and took a lot of troubleshooting. Next time I will hand write and draw the logic instead of keeping it up in my head. Also for the Hash table, next time instead I may try to have a variable called std::size_t longestbucket that stays updated with the longest chain in its buckets, this would make the  max_probe_length function complexity be O(1) instead of O(n) since it would just return a known value like .size on a vector.
