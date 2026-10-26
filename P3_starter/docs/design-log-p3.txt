@@ -1,5 +1,6 @@
 DESIGN LOG: PROJECT 3
 *I used gemini to help compile and run the code on wsl terminal, and my own code from P2
+Also this file is a txt in order to have the * operation show in writing
 Hash
 I decided to use separate chaining. The hash table is a vector composed of buckets, which are vectors, that store unique pointers to each tool called std::unique_ptr<Tool>.  If there is a collision a simple push_back is used keeping it to an O(1) complexity, the find command jumps to the bucket and scans the list, and nothing breaks if a bucket gets crowded. I chose not to use open addressing because it was harder to implement.
 The hash is a polynomial string hash: start at 0 and, for every character, compute h = h * 31 + (unsigned char)c. It uses every character and depends on their order. The table starts with 32 buckets. Before each insert, if (size + 1) / buckets > 0.75, add doubles the bucket count and re-inserts every tool at hash % new_size. The load factor therefore never exceeds 0.75 by increasing the total buckets before the size/buckets would be greater than .75.
